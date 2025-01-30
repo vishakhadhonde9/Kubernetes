@@ -36,10 +36,52 @@
 
 
 
+# Architecture of K8s -
+
+![image](https://github.com/user-attachments/assets/1b15e6a7-4932-45e4-9117-57c7d2e75332)
 
 
+- It consists of two main components:
+**1. Control Plane (master):** The part responsible for managing and controlling the entire Kubernetes cluster where all decision are made and keeps everything running smoothly.
+**2. Node (Worker Node):** These are the actual machines where your applications (containers) run.
 
+## Control Plane -
+- It again divided into further parts-
 
+### a. kube-apiserver (API Server) -
+- API server is the central component that handles all API requests (from users, nodes, or other Kubernetes components).
+- It serves as the gateway for all interactions with the Kubernetes cluster. Everything in Kubernetes communicates with the cluster through the API server, including internal and external requests.
+
+### b. etcd -
+- etcd is a distributed key-value store that holds the state of the entire Kubernetes cluster.
+- It stores configuration data, secrets, and the desired state of the system.
+
+### c. kube-scheduler -
+- Scheduler is responsible for deciding which node (worker machine) should run the newly created pods. It selects nodes based on factors like resource availability, policies, and constraints.
+- Scheduler makes decisions like placing pods where there are enough CPU or memory resources and balancing workloads across nodes.
+
+### d. kube-controller-manager -
+- Controller manager runs a set of controllers that regulate the state of the cluster. Each controller ensures that the current state matches the desired state.
+- It checks the system and makes sure everything is as it should be. For example, if some containers have stopped, it will automatically try to start new ones to replace them.
+
+### e. cloud-controller-manager (Optional) -
+- Cloud controller manager is responsible for interacting with cloud provider APIs (like AWS, GCP, Azure).
+- It manages cloud-specific resources like load balancers, storage volumes, and networking based on the cluster’s needs.
+- Not all Kubernetes clusters have this component, but it’s used when Kubernetes is running in a cloud environment.
+
+## 2. Worker Nodes-
+### a. kubelet -
+The kubelet is an agent that runs on each node in the cluster. It ensures that containers are running in a pod and are healthy.
+It communicates with the API server to get instructions (e.g., which pods to run) and reports back the status of the node and containers.
+b. kube-proxy
+The kube-proxy is responsible for maintaining network rules on each node. It manages the network communication inside the cluster, ensuring that services can reach the right pods, even when pods are created or destroyed.
+kube-proxy can use different mechanisms (like iptables or IPVS) to manage traffic routing and load balancing.
+c. Container Runtime
+The container runtime is the software that runs and manages containers. This could be Docker, containerd, or any other supported container runtime.
+Kubernetes relies on the container runtime to pull container images and manage their lifecycle on the node.
+d. Pods
+A pod is the smallest deployable unit in Kubernetes. It can contain one or more containers that share the same resources (like storage and networking).
+Pods are the actual entities where the applications run on the nodes. The kubelet makes sure the pod and its containers are healthy and running.
 
 
 
