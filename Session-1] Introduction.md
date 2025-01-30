@@ -45,8 +45,8 @@
 
 
 - It consists of two main components:
-**1. Control Plane (master):** The part responsible for managing and controlling the entire Kubernetes cluster where all decision are made and keeps everything running smoothly.
-**2. Node (Worker Node):** These are the actual machines where your applications (containers) run.
+- **1. Control Plane (master):** The part responsible for managing and controlling the entire Kubernetes cluster where all decision are made and keeps everything running smoothly.
+- **2. Node (Worker Node):** These are the actual machines where your applications (containers) run.
 
 ## Control Plane -
 - It again divided into further parts-
