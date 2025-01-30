@@ -34,7 +34,10 @@
 - Kubernetes can run containers across multiple cloud providers or on hybrid cloud environments.
 - It abstracts away the underlying infrastructure, meaning you can move workloads between clouds or between on-premises and cloud environments with ease.
 
-
+# Terminologies in K8s-
+- **Pods:** In Kubernetes, containers are grouped into units called "pods". A pod can contain one or more containers that work closely together.
+- **Nodes:** A node is a machine (either physical or virtual) where containers are actually run. A Kubernetes cluster consists of several nodes.
+- **Cluster:** A cluster is a set of nodes that work together to run your containers and manage workloads.
 
 # Architecture of K8s -
 
@@ -71,17 +74,22 @@
 
 ## 2. Worker Nodes-
 ### a. kubelet -
-The kubelet is an agent that runs on each node in the cluster. It ensures that containers are running in a pod and are healthy.
-It communicates with the API server to get instructions (e.g., which pods to run) and reports back the status of the node and containers.
-b. kube-proxy
-The kube-proxy is responsible for maintaining network rules on each node. It manages the network communication inside the cluster, ensuring that services can reach the right pods, even when pods are created or destroyed.
-kube-proxy can use different mechanisms (like iptables or IPVS) to manage traffic routing and load balancing.
-c. Container Runtime
-The container runtime is the software that runs and manages containers. This could be Docker, containerd, or any other supported container runtime.
-Kubernetes relies on the container runtime to pull container images and manage their lifecycle on the node.
-d. Pods
-A pod is the smallest deployable unit in Kubernetes. It can contain one or more containers that share the same resources (like storage and networking).
-Pods are the actual entities where the applications run on the nodes. The kubelet makes sure the pod and its containers are healthy and running.
+- Kubelet is an agent that runs on each node in the cluster.
+- It ensures that containers are running in a pod and are healthy.
+- It communicates with the API server to get instructions (e.g., which pods to run) and reports back the status of the node and containers.
+
+### b. kube-proxy -
+- Kube-proxy is responsible for maintaining network rules on each node. It manages the network communication inside the cluster, ensuring that services can reach the right pods, even when pods are created or destroyed.
+- kube-proxy can use different mechanisms to manage traffic routing and load balancing.
+
+### c. Container Runtime -
+- Container runtime is the software that runs and manages containers.
+- This could be Docker, containerd, or any other supported container runtime.
+- Kubernetes relies on the container runtime to pull container images and manage their lifecycle on the node.
+
+### d. Pods -
+- A pod is the smallest deployable unit in Kubernetes. It can contain one or more containers that share the same resources (like storage and networking).
+- Pods are the actual entities where the applications run on the nodes. The kubelet makes sure the pod and its containers are healthy and running.
 
 
 
