@@ -30,6 +30,9 @@
 - Every container in Kubernetes can be given a unique IP, and services can be defined to expose those containers to the outside world.
 - Kubernetes takes care of how containers communicate, even across multiple machines.
 
+### 7. Multi-Cloud and Hybrid Cloud Support -
+- Kubernetes can run containers across multiple cloud providers or on hybrid cloud environments.
+- It abstracts away the underlying infrastructure, meaning you can move workloads between clouds or between on-premises and cloud environments with ease.
 
 
 
