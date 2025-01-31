@@ -2,7 +2,7 @@
 
 #### Followings are the command to setup kubernetes -
 #### (Run on both nodes)
-sudo apt-get update –y
+sudo apt-get update 
 
 sudo apt-get install docker.io –y
 sudo apt-get install -y apt-transport-https ca-certificates curl gnupg
