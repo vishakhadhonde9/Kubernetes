@@ -28,3 +28,5 @@ kubeadm token create --print-join-command
 #### On Worker:
 Use kubeadm join command with token (copy the command from master and paste on worker)
  
+#### On Master:
+Kubectl get nodes
