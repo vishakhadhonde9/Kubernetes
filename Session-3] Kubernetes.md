@@ -13,6 +13,12 @@
           ports:
           - containerPort: 80
 
+
+
+
+
+
+
 ### 1. Creating a Pod -
 - Create a Pod from a manifest file:
 
