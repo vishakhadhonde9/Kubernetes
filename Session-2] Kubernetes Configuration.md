@@ -30,3 +30,4 @@
     
 #### On Master:
         Kubectl get nodes
+   
