@@ -86,10 +86,10 @@
 ## 1. Get Cluster Information -
 - Displays the Kubernetes cluster information, including the API server and DNS addresses.
 
-     kubectl cluster-info
+            kubectl cluster-info
 
 ## 2. Check Cluster Nodes -
 - Lists all nodes in the Kubernetes cluster and shows their status, roles, and version.
 
-     kubectl get nodes
+           kubectl get nodes
 
