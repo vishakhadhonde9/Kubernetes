@@ -47,7 +47,15 @@
 - To view all pods in current namespace.
 
       kubectl get pods
-      
+#### Get Detailed Information about pod -
+- Shows events, container status, IP address, and node details.
+  
+     kubectl describe pod my-pod
+
+#### Check Logs -
+
+      kubectl logs my-pod
+     
 
 ### 3. Delete a Pod:
 
