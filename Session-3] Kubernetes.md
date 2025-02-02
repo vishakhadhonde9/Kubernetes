@@ -1,4 +1,17 @@
-# How to Create Pod -
+# Node -
+## 1. List Nodes in the Cluster -
+- Displays all nodes in your Kubernetes cluster.
+- Shows each node’s status, roles, age, and version.
+
+      kubectl get nodes
+
+## 2. Get Detailed Information about a Node -
+
+      kubectl describe node <node-name>
+
+
+
+# Pod -
 ## Manifest file -
 - A Kubernetes manifest file is a YAML or JSON file that defines the desired state of objects (like Pods, Deployments, Services, etc.) in a Kubernetes cluster.
 
