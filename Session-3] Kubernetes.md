@@ -8,10 +8,9 @@
         name: my-pod
       spec:
         containers:
-        - name: nginx-container
+        - name: my-container
           image: nginx
-          ports:
-          - containerPort: 80
+
 
 
 
