@@ -60,6 +60,9 @@
 - To view all pods in current namespace.
 
       kubectl get pods
+      kubectl get pods -wide
+
+  
 #### Get Detailed Information about pod -
 - Shows events, container status, IP address, and node details.
   
@@ -82,14 +85,20 @@
 
       kubectl exec -it pod_name -- /bin/sh
 
+### 6. Forward Port -
+- kubectl port-forward command is to allow you to access a specific port on a Kubernetes pod or service from your local machine.
+- This is helpful when you want to interact with an application or service running inside a Kubernetes cluster
+
+        kubectl port-forward pod/<pod-name> <local-port>:<pod-port>
+
+
 # K8s Cluster -
 ## 1. Get Cluster Information -
 - Displays the Kubernetes cluster information, including the API server and DNS addresses.
 
             kubectl cluster-info
 
-## 2. Check Cluster Nodes -
-- Lists all nodes in the Kubernetes cluster and shows their status, roles, and version.
 
-           kubectl get nodes
+
+
 
