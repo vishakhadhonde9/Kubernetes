@@ -60,7 +60,7 @@
 - To view all pods in current namespace.
 
       kubectl get pods
-      kubectl get pods -wide
+      kubectl get pod -o wide
 
   
 #### Get Detailed Information about pod -
