@@ -89,7 +89,7 @@
 - kubectl port-forward command is to allow you to access a specific port on a Kubernetes pod or service from your local machine.
 - This is helpful when you want to interact with an application or service running inside a Kubernetes cluster
 
-        kubectl port-forward pod/<pod-name> <local-port>:<pod-port>
+        kubectl port-forward pod-name <host-port>:<pod-port>
 
 
 # K8s Cluster -
