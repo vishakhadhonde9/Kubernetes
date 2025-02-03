@@ -24,7 +24,7 @@
         - name: my-container
           image: nginx
 
-- **MYSQl File-**
+- **MySQL File-**
 
       apiVersion: v1
       kind: Pod
@@ -60,7 +60,7 @@
 - To view all pods in current namespace.
 
       kubectl get pods
-      kubectl get pod -o wide
+      kubectl get pod -o wide  ---> Shows ip address of container.
 
   
 #### Get Detailed Information about pod -
@@ -85,11 +85,7 @@
 
       kubectl exec -it pod_name -- /bin/sh
 
-### 6. Forward Port -
-- kubectl port-forward command is to allow you to access a specific port on a Kubernetes pod or service from your local machine.
-- This is helpful when you want to interact with an application or service running inside a Kubernetes cluster
 
-        kubectl port-forward pod-name <host-port>:<pod-port>
 
 
 # K8s Cluster -
