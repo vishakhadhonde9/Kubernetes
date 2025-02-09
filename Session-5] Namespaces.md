@@ -21,3 +21,13 @@
       kind: Namespace
       metadata:
         name: <namespace-name>
+
+### List the namespaces -
+
+     kubectl get namespaces
+
+## Delete a namespace -
+- Deletes the specified namespace and all resources inside it.
+
+      kubectl delete namespace <namespace-name>
+
