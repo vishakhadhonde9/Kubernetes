@@ -97,4 +97,64 @@
 
 
 
+# Labels -
+- labels are key-value pairs attached to resources (like Pods, Services, Deployments, etc.) to organize and select subsets of objects.
+- Labels help categorize resources, making it easier to identify, manage, and group them based on certain attributes.
+
+### Adding Labels to Resources -
+- You can add labels to resources during creation (via YAML) or afterward (via kubectl).
+
+       kubectl label <resource-type> <resource-name> <label-key>=<label-value>
+
+       kubectl label pod nginx-pod env=production
+
+
+### Listing Labels on a Resource -
+
+       kubectl get <resource-type> <resource-name> --show-labels
+
+       kubectl get pod nginx-pod --show-labels
+
+### Removing Labels from Resources
+
+       kubectl label <resource-type> <resource-name> <label-key>-
+
+       kubectl label pod nginx-pod env-
+
+### Selecting Multiple Labels
+
+       kubectl get <resource-type> -l <label-key1>=<label-value1>,<label-key2>=<label-value2>
+
+       kubectl get pods -l env=production,app=nginx
+
+### Labeling Resources at Creation (YAML) -
+
+            apiVersion: v1
+            kind: Pod
+            metadata:
+              name: nginx-pod
+              labels:
+                app: nginx
+                env: production
+            spec:
+              containers:
+              - name: nginx
+                image: nginx
+
+### Using Label Selectors in Services -
+
+            apiVersion: v1
+            kind: Service
+            metadata:
+              name: nginx-service
+            spec:
+              selector:
+                app: nginx
+              ports:
+                - protocol: TCP
+                  port: 80
+                  targetPort: 80
+
+
+
 
