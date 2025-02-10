@@ -31,3 +31,33 @@
 
       kubectl delete namespace <namespace-name>
 
+# How to Create Pod Inside Specific Namespace- 
+#### 1. Using kubectl Command -
+
+    kubectl run pod-name --image=nginx --namespace=my-namespace
+
+
+#### 2. Using a Pod YAML Manifest -
+
+    apiVersion: v1
+    kind: Pod
+    metadata:
+      name: pod-name
+      namespace: namespace
+    spec:
+      containers:
+      - name: nginx-container
+        image: nginx
+
+
+#### 3. If Namesapce is already created but not specify in manifest file -
+
+   kubectl apply -f pod.yaml -n my-namespace
+
+
+
+
+
+
+
+
