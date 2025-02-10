@@ -102,28 +102,28 @@
 - Labels help categorize resources, making it easier to identify, manage, and group them based on certain attributes.
 
 ### Adding Labels to Resources -
-- You can add labels to resources during creation (via YAML) or afterward (via kubectl).
+- You can add labels to resources during creation (using YAML) or afterward (using kubectl).
 
-       kubectl label <resource-type> <resource-name> <label-key>=<label-value>
+       kubectl label pod podname <label-key>=<label-value>
 
        kubectl label pod nginx-pod env=production
 
 
 ### Listing Labels on a Resource -
 
-       kubectl get <resource-type> <resource-name> --show-labels
+       kubectl get pod podname --show-labels
 
        kubectl get pod nginx-pod --show-labels
 
 ### Removing Labels from Resources
 
-       kubectl label <resource-type> <resource-name> <label-key>-
+       kubectl label pod podname <label-key>-
 
        kubectl label pod nginx-pod env-
 
 ### Selecting Multiple Labels
 
-       kubectl get <resource-type> -l <label-key1>=<label-value1>,<label-key2>=<label-value2>
+       kubectl get pods -l <label-key1>=<label-value1>,<label-key2>=<label-value2>
 
        kubectl get pods -l env=production,app=nginx
 
@@ -141,20 +141,29 @@
               - name: nginx
                 image: nginx
 
-### Using Label Selectors in Services -
+## Lebeling to Nodes -
+
+            kubectl label nodes <node-name> <label-key>=<label-value>
+            kubectl label nodes <node-name> gpu=true
+      
+
+## Check Namespaces -
+
+            kubectl get nodes --show-labels
+
+
+## Labelling using YAML file -
 
             apiVersion: v1
-            kind: Service
+            kind: Pod
             metadata:
-              name: nginx-service
+              name: nginxpod
             spec:
-              selector:
-                app: nginx
-              ports:
-                - protocol: TCP
-                  port: 80
-                  targetPort: 80
-
-
-
+              nodeSelector:
+                gpu: "true"  # Only schedules the Pod on nodes labeled with gpu=true
+              containers:
+                - image: nginx
+                  name: mynignx
+                  ports:
+                    - containerPort: 80
 
