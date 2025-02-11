@@ -44,6 +44,44 @@
        kubectl delete replicationcontroller podname
 
 
+# Probes -
+- Probes are mechanisms that Kubernetes uses to determine whether containers in a pod are running properly.
+
+## Types of probes:
+
+### 1] Liveness Probe -
+- Liveness Probe in Kubernetes is used to check whether a container in a pod is still running and healthy.
+- If the liveness probe fails, Kubernetes will restart the container to try and recover from an unhealthy state.
+
+
+#### Types of Liveness Probes -
+**a] HTTP Request Probe-**
+
+            livenessProbe:
+              httpGet:
+                path: /healthz
+                port: 8080
+              initialDelaySeconds: 3
+              periodSeconds: 5
+
+**b] TCP Socket Probe-**
+
+            livenessProbe:
+              tcpSocket:
+                port: 8080
+              initialDelaySeconds: 3
+              periodSeconds: 5
+
+**c] Exec Probe-**
+- Kubernetes runs a command inside the container and checks the exit code.
+
+            
+            livenessProbe:
+              exec:
+                command:
+                  - "ls /usr/share/nginx/html"
+              initialDelaySeconds: 3
+              periodSeconds: 5
 
 
 
