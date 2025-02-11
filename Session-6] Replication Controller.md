@@ -85,7 +85,76 @@
 
 
 
+### 2] Readiness Probe -
+- The Readiness Probe in Kubernetes is used to determine if a container is ready to accept traffic.
+- It helps ensure that a container is fully initialized and can handle requests before Kubernetes routes any traffic to it. - If the readiness probe fails, Kubernetes will stop sending traffic to that container but will not restart it.
 
+            apiVersion: v1
+            kind: Pod
+            metadata:
+              name: myapp
+            spec:
+              containers:
+                - name: myapp-container
+                  image: myapp-image
+                  readinessProbe:
+                    httpGet:
+                      path: /readiness
+                      port: 8080
+                    initialDelaySeconds: 5
+                    periodSeconds: 10
+                    timeoutSeconds: 2
+                    failureThreshold: 3
+                    successThreshold: 1
+
+
+### 3] Startup Probe -
+- Startup Probe is a special type of probe in Kubernetes designed to detect if an application within a container has successfully started
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            apiVersion: v1
+            kind: Pod
+            metadata:
+              name: myapp
+            spec:
+              containers:
+                - name: myapp-container
+                  image: myapp-image
+                  livenessProbe:
+                    httpGet:
+                      path: /healthz
+                      port: 8080
+                    initialDelaySeconds: 5
+                    periodSeconds: 10
+                    timeoutSeconds: 2
+                    failureThreshold: 3
+                    successThreshold: 1
 
 
 
