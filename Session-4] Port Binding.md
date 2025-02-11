@@ -10,6 +10,6 @@
 
 
 ### Access Webpage:
-    curl curl http://localhost:forwarded port
+    curl http://localhost:forwarded port
     curl http://127.0.0.1:forwarded port
     curl private_ip_of_pod
