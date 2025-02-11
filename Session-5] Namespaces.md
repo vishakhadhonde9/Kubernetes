@@ -55,6 +55,8 @@
         image: nginx
 
 
+-  kubectl apply -f pod.yaml
+
 #### 3. If Namesapce is already created but not specify in manifest file -
 
         kubectl apply -f pod.yaml -n my-namespace
