@@ -57,7 +57,7 @@
 
 #### 3. If Namesapce is already created but not specify in manifest file -
 
-   kubectl apply -f pod.yaml -n my-namespace
+        kubectl apply -f pod.yaml -n my-namespace
 
 
 
