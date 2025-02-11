@@ -29,7 +29,7 @@
 ## List Resources in a Specific Namespace: 
 - To list all resources in a specific namespace.
 
-   kubectl get pods -n my-namespace
+      kubectl get pods -n my-namespace
 
 ## Delete a namespace -
 - Deletes the specified namespace and all resources inside it.
