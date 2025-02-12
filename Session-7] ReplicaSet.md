@@ -41,3 +41,10 @@ kubectl scale rs my-app-replicaset --replicas=5
 ## Delete ReplicaSet:
 
 kubectl delete rs my-app-replicaset
+
+## Get Pods with a Specific Label -
+
+kubectl get pods -l labelkey=label value
+kubectl get pods -l 'key in (value1,value2)'
+
+kubectl get pods -l 'key!=value1'
