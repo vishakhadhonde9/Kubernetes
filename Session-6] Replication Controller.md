@@ -84,6 +84,33 @@
               periodSeconds: 5
 
 
+### Example- 
+
+
+            apiVersion: v1
+            kind: Pod
+            metadata:
+              name: myapp
+            spec:
+              containers:
+                - name: myapp-container
+                  image: myapp-image
+                  livenessProbe:
+                    httpGet:
+                      path: /liveness
+                      port: 8080
+                    initialDelaySeconds: 10  
+                    periodSeconds: 15        
+                    timeoutSeconds: 3        
+                    failureThreshold: 3      
+                    successThreshold: 1      
+            
+            
+
+
+
+
+
 
 ### 2] Readiness Probe -
 - The Readiness Probe in Kubernetes is used to determine if a container is ready to accept traffic.
