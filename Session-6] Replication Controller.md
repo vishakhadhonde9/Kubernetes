@@ -92,7 +92,7 @@ kind: ReplicationController
 metadata:
   name: myapp-replication
 spec:
-  replicas: 3  # Number of pod replicas you want to run
+  replicas: 3  
   template:
     metadata:
       labels:
@@ -105,11 +105,11 @@ spec:
             httpGet:
               path: /index.html
               port: 8080
-            initialDelaySeconds: 10  # Delay before the first check after the container starts
-            periodSeconds: 15        # Interval between checks
-            timeoutSeconds: 3        # How long to wait for a response
-            failureThreshold: 3      # Number of failed checks before the container is restarted
-            successThreshold: 1      # Number of successes needed to consider the container healthy
+            initialDelaySeconds: 10  
+            periodSeconds: 15        
+            timeoutSeconds: 3        
+            failureThreshold: 3      
+            successThreshold: 1      
 
 
 
