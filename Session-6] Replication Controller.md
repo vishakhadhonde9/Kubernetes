@@ -87,29 +87,29 @@
 ### Example- 
 
 
-apiVersion: v1
-kind: ReplicationController
-metadata:
-  name: myapp-replication
-spec:
-  replicas: 3  
-  template:
-    metadata:
-      labels:
-        app: myapp
-    spec:
-      containers:
-        - name: myapp-container
-          image: myapp-image
-          livenessProbe:
-            httpGet:
-              path: /index.html
-              port: 8080
-            initialDelaySeconds: 10  
-            periodSeconds: 15        
-            timeoutSeconds: 3        
-            failureThreshold: 3      
-            successThreshold: 1      
+            apiVersion: v1
+            kind: ReplicationController
+            metadata:
+              name: myapp-replication
+            spec:
+              replicas: 3  
+              template:
+                metadata:
+                  labels:
+                    app: myapp
+                spec:
+                  containers:
+                    - name: cont-1
+                      image: nginx
+                      livenessProbe:
+                        httpGet:
+                          path: /index.html
+                          port: 8080
+                        initialDelaySeconds: 10  
+                        periodSeconds: 15        
+                        timeoutSeconds: 3        
+                        failureThreshold: 3      
+                        successThreshold: 1      
 
 
 
@@ -144,6 +144,29 @@ spec:
 - Startup Probe is a special type of probe in Kubernetes designed to detect if an application within a container has successfully started.
 
 
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: myapp-replication
+spec:
+  replicas: 3  
+  template:
+    metadata:
+      labels:
+        app: myapp
+    spec:
+      containers:
+        - name: myapp-container
+          image: myapp-image
+          startupProbe:
+            httpGet:
+              path: /startup
+              port: 8080
+            initialDelaySeconds: 15  
+            periodSeconds: 10        
+            timeoutSeconds: 3        
+            failureThreshold: 30     
+            successThreshold: 1      
 
 
 
@@ -170,23 +193,7 @@ spec:
 
 
 
-            apiVersion: v1
-            kind: Pod
-            metadata:
-              name: myapp
-            spec:
-              containers:
-                - name: myapp-container
-                  image: myapp-image
-                  livenessProbe:
-                    httpGet:
-                      path: /healthz
-                      port: 8080
-                    initialDelaySeconds: 5
-                    periodSeconds: 10
-                    timeoutSeconds: 2
-                    failureThreshold: 3
-                    successThreshold: 1
+
 
 
 
