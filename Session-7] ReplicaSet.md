@@ -25,3 +25,19 @@ spec:
         ports:
         - containerPort: 80
         
+
+## Create a ReplicaSet-
+
+kubectl apply -f replicaset.yaml
+
+## Check ReplicaSet-
+
+kubectl get rs
+
+## Scale Pods:
+
+kubectl scale rs my-app-replicaset --replicas=5
+
+## Delete ReplicaSet:
+
+kubectl delete rs my-app-replicaset
