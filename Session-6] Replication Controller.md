@@ -87,25 +87,30 @@
 ### Example- 
 
 
-            apiVersion: v1
-            kind: Pod
-            metadata:
-              name: myapp
-            spec:
-              containers:
-                - name: cont-1
-                  image: nginx
-                  livenessProbe:
-                    httpGet:
-                      path: /index.html
-                      port: 8080
-                    initialDelaySeconds: 10  
-                    periodSeconds: 15        
-                    timeoutSeconds: 3        
-                    failureThreshold: 3      
-                    successThreshold: 1      
-            
-            
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: myapp-replication
+spec:
+  replicas: 3  # Number of pod replicas you want to run
+  template:
+    metadata:
+      labels:
+        app: myapp
+    spec:
+      containers:
+        - name: myapp-container
+          image: myapp-image
+          livenessProbe:
+            httpGet:
+              path: /index.html
+              port: 8080
+            initialDelaySeconds: 10  # Delay before the first check after the container starts
+            periodSeconds: 15        # Interval between checks
+            timeoutSeconds: 3        # How long to wait for a response
+            failureThreshold: 3      # Number of failed checks before the container is restarted
+            successThreshold: 1      # Number of successes needed to consider the container healthy
+
 
 
 
@@ -136,7 +141,7 @@
 
 
 ### 3] Startup Probe -
-- Startup Probe is a special type of probe in Kubernetes designed to detect if an application within a container has successfully started
+- Startup Probe is a special type of probe in Kubernetes designed to detect if an application within a container has successfully started.
 
 
 
