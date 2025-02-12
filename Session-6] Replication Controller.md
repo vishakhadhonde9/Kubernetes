@@ -32,7 +32,7 @@
 
 ## View Details of a ReplicationController:
 
-       kubectl describe replicationcontroller / rc podname
+       kubectl describe replicationcontroller / rc 
 
 ## Scale the ReplicationController:
 - To change the number of replicas (e.g., scale to 5 Pods):
