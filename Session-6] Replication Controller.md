@@ -93,11 +93,11 @@
               name: myapp
             spec:
               containers:
-                - name: myapp-container
-                  image: myapp-image
+                - name: cont-1
+                  image: nginx
                   livenessProbe:
                     httpGet:
-                      path: /liveness
+                      path: /index.html
                       port: 8080
                     initialDelaySeconds: 10  
                     periodSeconds: 15        
