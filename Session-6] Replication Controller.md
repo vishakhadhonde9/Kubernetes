@@ -144,31 +144,31 @@
 - Startup Probe is a special type of probe in Kubernetes designed to detect if an application within a container has successfully started.
 
 
-apiVersion: v1
-kind: ReplicationController
-metadata:
-  name: myapp-replication
-spec:
-  replicas: 3  
-  template:
-    metadata:
-      labels:
-        app: myapp
-    spec:
-      containers:
-        - name: myapp-container
-          image: myapp-image
-          startupProbe:
-            httpGet:
-              path: /startup
-              port: 8080
-            initialDelaySeconds: 15  
-            periodSeconds: 10        
-            timeoutSeconds: 3        
-            failureThreshold: 30     
-            successThreshold: 1      
-
-
+            apiVersion: v1
+            kind: ReplicationController
+            metadata:
+              name: myapp-replication
+            spec:
+              replicas: 3  
+              template:
+                metadata:
+                  labels:
+                    app: myapp
+                spec:
+                  containers:
+                    - name: myapp-container
+                      image: myapp-image
+                      startupProbe:
+                        httpGet:
+                          path: /startup
+                          port: 8080
+                        initialDelaySeconds: 15  
+                        periodSeconds: 10        
+                        timeoutSeconds: 3        
+                        failureThreshold: 30     
+                        successThreshold: 1      
+            
+            
 
 
 
