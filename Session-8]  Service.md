@@ -35,7 +35,7 @@
                    selector:
                      app: my-app  
                    ports:
-                       port: 80  # The port exposed by the service
+                     - port: 80  # The port exposed by the service
                        targetPort: 80  # The port on the Pods that the service forwards traffic to
                      
 
