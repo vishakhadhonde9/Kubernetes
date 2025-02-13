@@ -61,7 +61,7 @@ curl http://my-clusterip-service.default.svc.cluster.local:80
           selector:
             app: my-app
           ports:
-              port: 80         # The port the service will be available on inside the cluster.
+            - port: 80         # The port the service will be available on inside the cluster.
               targetPort: 8080  # The port inside the container that the service will forward to.
               nodePort: 30080   # The external port to expose on all nodes (within the NodePort range).
           type: NodePort      
