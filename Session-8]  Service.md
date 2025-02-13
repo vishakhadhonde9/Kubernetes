@@ -98,6 +98,49 @@ curl http://my-clusterip-service.default.svc.cluster.local:80
 
 
 # Ingress -
-- 
+- Ingress in Kubernetes is a resource that manages external access to services within a Kubernetes cluster for usually HTTP or HTTPS traffic.
+- It acts as an entry point for external users or systems to reach your services running inside Kubernetes.
+- If you have two services:
+       -  Service A: Handles the homepage (example.com).
+       -  Service B: Handles the API (api.example.com).
+- You can create an Ingress to route traffic to each service based on the URL or hostname:
+       -  Requests to example.com go to Service A.
+       -  Requests to api.example.com go to Service B.
 
 
+
+                  apiVersion: networking.k8s.io/v1
+                  kind: Ingress
+                  metadata:
+                    name: my-ingress
+                    namespace: default
+                  spec:
+                    rules:
+                    - host: example.com
+                      http:
+                        paths:
+                        - path: /
+                          pathType: Prefix
+                          backend:
+                            service:
+                              name: service-a
+                              port:
+                                number: 80
+                    - host: api.example.com
+                      http:
+                        paths:
+                        - path: /
+                          pathType: Prefix
+                          backend:
+                            service:
+                              name: service-b
+                              port:
+                                number: 80
+                    
+
+
+
+
+
+
+  
