@@ -5,26 +5,26 @@
 
 
 
-    apiVersion: apps/v1
-    kind: ReplicaSet
-    metadata:
-      name: my-app-replicaset
-    spec:
-      replicas: 3  
-      selector:
-        matchLabels:
-          app: my-app 
-      template:
+        apiVersion: apps/v1
+        kind: ReplicaSet
         metadata:
-          labels:
-            app: my-app  
+          name: my-app-replicaset
         spec:
-          containers:
-          - name: my-app-container
-            image: nginx 
-            ports:
-            - containerPort: 80
-            
+          replicas: 3  
+          selector:
+            matchLabels:
+              app: my-app 
+          template:
+            metadata:
+              labels:
+                app: my-app  
+            spec:
+              containers:
+              - name: my-app-container
+                image: nginx 
+                ports:
+                - containerPort: 80
+                
 
 ## Create a ReplicaSet-
 
