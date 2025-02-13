@@ -53,24 +53,24 @@ curl http://my-clusterip-service.default.svc.cluster.local:80
 - This allows external clients to access your service by sending requests to <NodeIP>:<NodePort>.
 - Essentially Kubernetes maps a port on each node to a port inside your container and making it accessible outside the Kubernetes cluster.
 
-        apiVersion: v1
-        kind: Service
-        metadata:
-          name: my-nodeport-service
-        spec:
-          selector:
-            app: my-app
-          ports:
-            - port: 80         # The port the service will be available on inside the cluster.
-              targetPort: 8080  # The port inside the container that the service will forward to.
-              nodePort: 30080   # The external port to expose on all nodes (within the NodePort range).
-          type: NodePort      
-
+         apiVersion: v1
+         kind: Service
+         metadata:
+           name: nginx-service
+         spec:
+           selector:
+             app: nginx
+           ports:
+             - protocol: TCP
+               port: 80         # Port on which the service will be available internally
+               targetPort: 80   # Port on the pod to which traffic will be forwarded
+               nodePort: 30001  # External port to be used on each node
+           type: NodePort
 
 
 #### Accessing the Service from Outside the Cluster-
 
-        http://node's IP:30080
+        http://node's IP:30001
 
 
 ## 3] Load Balancer-
