@@ -5,50 +5,50 @@
 
 
 
-apiVersion: apps/v1
-kind: ReplicaSet
-metadata:
-  name: my-app-replicaset
-spec:
-  replicas: 3  
-  selector:
-    matchLabels:
-      app: my-app 
-  template:
+    apiVersion: apps/v1
+    kind: ReplicaSet
     metadata:
-      labels:
-        app: my-app  
+      name: my-app-replicaset
     spec:
-      containers:
-      - name: my-app-container
-        image: nginx 
-        ports:
-        - containerPort: 80
-        
+      replicas: 3  
+      selector:
+        matchLabels:
+          app: my-app 
+      template:
+        metadata:
+          labels:
+            app: my-app  
+        spec:
+          containers:
+          - name: my-app-container
+            image: nginx 
+            ports:
+            - containerPort: 80
+            
 
 ## Create a ReplicaSet-
 
-kubectl apply -f replicaset.yaml
+      kubectl apply -f replicaset.yaml
 
 ## Check ReplicaSet-
 
-kubectl get rs
+      kubectl get rs
 
 ## Scale Pods:
 
-kubectl scale rs my-app-replicaset --replicas=5
+    kubectl scale rs my-app-replicaset --replicas=5
 
 ## Delete ReplicaSet:
 
-kubectl delete rs my-app-replicaset
+    kubectl delete rs my-app-replicaset
 
 ## Get Pods with a Specific Label -
 
-kubectl get pods -l labelkey=label value
-kubectl get pods -l 'key in (value1,value2)'
-
-kubectl get pods -l 'key!=value1'
-
+      kubectl get pods -l labelkey=label value
+      kubectl get pods -l 'key in (value1,value2)'
+      
+      kubectl get pods -l 'key!=value1'
+      
 
 
 # Daemon Set-
@@ -58,26 +58,26 @@ kubectl get pods -l 'key!=value1'
 - If a pod crashes, the DaemonSet will recreate it on the same node to ensure it’s always running.
 
 
-apiVersion: apps/v1
-kind: DaemonSet
-metadata:
-  name: nginx-daemonset
-spec:
-  selector:
-    matchLabels:
-      name: nginx
-  template:
-    metadata:
-      labels:
-        name: nginx
-    spec:
-      containers:
-      - name: nginx
-        image: nginx
-        ports:
-        - containerPort: 80
+      apiVersion: apps/v1
+      kind: DaemonSet
+      metadata:
+        name: nginx-daemonset
+      spec:
+        selector:
+          matchLabels:
+            name: nginx
+        template:
+          metadata:
+            labels:
+              name: nginx
+          spec:
+            containers:
+            - name: nginx
+              image: nginx
+              ports:
+              - containerPort: 80
 
 
 ## List DaemonSets:
 
-kubectl get daemonsets
+      kubectl get daemonsets
