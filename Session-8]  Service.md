@@ -25,18 +25,18 @@
 - It provides a stable IP address that is only accessible from other Pods within the same Kubernetes cluster.
 - The ClusterIP service is ideal for internal communication within the cluster.
 
-
-        apiVersion: v1
-        kind: Service
-        metadata:
-          name: service1
-        spec:
-          selector:
-            app: my-app  
-          ports:
-              port: 80  # The port exposed by the service
-              targetPort: 80  # The port on the Pods that the service forwards traffic to
-          type: ClusterIP  
+         
+                 apiVersion: v1
+                 kind: Service
+                 metadata:
+                   name: service1
+                 spec:
+                   selector:
+                     app: my-app  
+                   ports:
+                       port: 80  # The port exposed by the service
+                       targetPort: 80  # The port on the Pods that the service forwards traffic to
+                   type: ClusterIP  
 
 
 
