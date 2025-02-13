@@ -1,3 +1,101 @@
 # Service -
 - Service is an abstraction that defines a logical set of Pods and a policy to access them.
 - Services enable communication between different Pods and other resources, as they provide stable network identities for Pods.
+- Service port: 30000-32767
+
+#### List Services-
+
+    kubectl get services
+
+####  Get Details of a Specific Service
+
+    kubectl describe service <service-name>
+
+#### Deleting a Service-
+
+kubectl delete service <service-name>
+
+
+
+
+## Types of services -
+
+### 1] ClusterIP Service -
+- ClusterIP service is the default and most common type of service in Kubernetes.
+- It provides a stable IP address that is only accessible from other Pods within the same Kubernetes cluster.
+- The ClusterIP service is ideal for internal communication within the cluster.
+
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: service1
+spec:
+  selector:
+    app: my-app  
+  ports:
+      port: 80  # The port exposed by the service
+      targetPort: 80  # The port on the Pods that the service forwards traffic to
+  type: ClusterIP  
+
+
+
+
+#### Accessing the ClusterIP Service from Pods-
+
+curl http://my-clusterip-service.default.svc.cluster.local:80
+
+
+
+## 2]  NodePort -
+- NodePort service is a type of Kubernetes service that exposes your application on a static port on every node in your cluster.
+- This allows external clients to access your service by sending requests to <NodeIP>:<NodePort>.
+- Essentially Kubernetes maps a port on each node to a port inside your container and making it accessible outside the Kubernetes cluster.
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-nodeport-service
+spec:
+  selector:
+    app: my-app
+  ports:
+      port: 80         # The port the service will be available on inside the cluster.
+      targetPort: 8080  # The port inside the container that the service will forward to.
+      nodePort: 30080   # The external port to expose on all nodes (within the NodePort range).
+  type: NodePort      
+
+
+
+#### Accessing the Service from Outside the Cluster-
+
+http://node's IP:30080
+
+
+## 3] Load Balancer-
+- LoadBalancer service is a type of Kubernetes service that automatically provisions an external load balance to distribute traffic to the service's Pods.
+- This is especially useful when you want to expose your application to the internet and rely on a cloud provider's infrastructure to manage external traffic.
+
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-loadbalancer-service
+spec:
+  selector:
+    app: my-app
+  ports:
+      port: 80         # The port the service will be available on inside the cluster.
+      targetPort: 8080  # The port inside the container that the service will forward to.
+  type: LoadBalancer   
+
+
+### Accessing the LoadBalancer Service
+http://external-IP:80
+
+
+
+
+
+
+
