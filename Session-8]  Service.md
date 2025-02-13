@@ -5,15 +5,15 @@
 
 #### List Services-
 
-    kubectl get services
+         kubectl get services
 
 ####  Get Details of a Specific Service
 
-    kubectl describe service <service-name>
+        kubectl describe service <service-name>
 
 #### Deleting a Service-
 
-kubectl delete service <service-name>
+        kubectl delete service <service-name>
 
 
 
@@ -26,17 +26,17 @@ kubectl delete service <service-name>
 - The ClusterIP service is ideal for internal communication within the cluster.
 
 
-apiVersion: v1
-kind: Service
-metadata:
-  name: service1
-spec:
-  selector:
-    app: my-app  
-  ports:
-      port: 80  # The port exposed by the service
-      targetPort: 80  # The port on the Pods that the service forwards traffic to
-  type: ClusterIP  
+        apiVersion: v1
+        kind: Service
+        metadata:
+          name: service1
+        spec:
+          selector:
+            app: my-app  
+          ports:
+              port: 80  # The port exposed by the service
+              targetPort: 80  # The port on the Pods that the service forwards traffic to
+          type: ClusterIP  
 
 
 
@@ -52,24 +52,24 @@ curl http://my-clusterip-service.default.svc.cluster.local:80
 - This allows external clients to access your service by sending requests to <NodeIP>:<NodePort>.
 - Essentially Kubernetes maps a port on each node to a port inside your container and making it accessible outside the Kubernetes cluster.
 
-apiVersion: v1
-kind: Service
-metadata:
-  name: my-nodeport-service
-spec:
-  selector:
-    app: my-app
-  ports:
-      port: 80         # The port the service will be available on inside the cluster.
-      targetPort: 8080  # The port inside the container that the service will forward to.
-      nodePort: 30080   # The external port to expose on all nodes (within the NodePort range).
-  type: NodePort      
+        apiVersion: v1
+        kind: Service
+        metadata:
+          name: my-nodeport-service
+        spec:
+          selector:
+            app: my-app
+          ports:
+              port: 80         # The port the service will be available on inside the cluster.
+              targetPort: 8080  # The port inside the container that the service will forward to.
+              nodePort: 30080   # The external port to expose on all nodes (within the NodePort range).
+          type: NodePort      
 
 
 
 #### Accessing the Service from Outside the Cluster-
 
-http://node's IP:30080
+        http://node's IP:30080
 
 
 ## 3] Load Balancer-
@@ -77,21 +77,21 @@ http://node's IP:30080
 - This is especially useful when you want to expose your application to the internet and rely on a cloud provider's infrastructure to manage external traffic.
 
 
-apiVersion: v1
-kind: Service
-metadata:
-  name: my-loadbalancer-service
-spec:
-  selector:
-    app: my-app
-  ports:
-      port: 80         # The port the service will be available on inside the cluster.
-      targetPort: 8080  # The port inside the container that the service will forward to.
-  type: LoadBalancer   
+        apiVersion: v1
+        kind: Service
+        metadata:
+          name: my-loadbalancer-service
+        spec:
+          selector:
+            app: my-app
+          ports:
+              port: 80         # The port the service will be available on inside the cluster.
+              targetPort: 8080  # The port inside the container that the service will forward to.
+          type: LoadBalancer   
 
 
 ### Accessing the LoadBalancer Service
-http://external-IP:80
+        http://external-IP:80
 
 
 
