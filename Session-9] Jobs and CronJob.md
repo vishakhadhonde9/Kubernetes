@@ -4,18 +4,18 @@
 - The job runs until it's finished (successfully).
 - If the job fails, Kubernetes will try again until it succeeds or the maximum number of retries is reached.
 
-      apiVersion: batch/v1
-      kind: Job
-      metadata:
-        name: hello-job
-      spec:
-        template:
-          spec:
-            containers:
-            - name: hello
-              image: busybox
-              command: ["ech0", "Hello, Kubernetes!"]
-            restartPolicy: OnFailure  # Restart only if it fails
+            apiVersion: batch/v1
+            kind: Job
+            metadata:
+              name: hello-job
+            spec:
+              template:
+                spec:
+                  containers:
+                  - name: hello
+                    image: busybox
+                    command: ["echo", "Hello, Kubernetes!"]
+                  restartPolicy: OnFailure  # Restart only if it fails
 
 
 ### List the jobs -
