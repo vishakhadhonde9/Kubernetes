@@ -48,8 +48,18 @@
           image: nginx:1.19  # Update the image
 
 
+## Check the current rollout status:
+
+        kubectl rollout status deployment/<deployment-name>
 
 
+## Rollback a deployment to a previous revision:
 
+        kubectl rollout undo deployment/<deployment-name>
+
+
+## View the history of a rollout:
+
+        kubectl rollout history deployment/<deployment-name>
 
 
