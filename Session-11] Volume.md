@@ -12,21 +12,22 @@
 - If a Pod has multiple containers, all those containers can share the same emptyDir volume. They can read and write to the same space.
 - It's useful for storing temporary data that doesn't need to be kept after the Pod is deleted, like caching or temporary files that can be recreated.
 
+                
+                apiVersion: v1
+                kind: Pod
+                metadata:
+                  name: example-pod
+                spec:
+                  containers:
+                  - name: container1
+                    image: nginx
+                    volumeMounts:
+                    - mountPath: /usr/share/nginx/html/
+                      name: v1
+                  volumes:
+                  - name: v1
+                    emptyDir: {}
 
-        apiVersion: v1
-        kind: Pod
-        metadata:
-          name: example-pod
-        spec:
-          containers:
-          - name: container1
-            image: nginx
-            volumeMounts:
-            - mountPath: /tmp
-              name: temp-storage
-          volumes:
-          - name: temp-storage
-            emptyDir: {}
 
 
 ### 2] hostPath -
