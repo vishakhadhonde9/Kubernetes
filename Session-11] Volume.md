@@ -99,6 +99,93 @@
               storage: 10Gi  # Requesting 10Gi of storage
 
 
+#### Pod using PVC -
+
+                apiVersion: v1
+                kind: Pod
+                metadata:
+                  name: pod-with-pvc
+                spec:
+                  containers:
+                  - name: container1
+                    image: nginx
+                    volumeMounts:
+                    - mountPath: /data  # Path inside the container where the volume will be mounted
+                      name: data-storage
+                  volumes:
+                  - name: data-storage
+                    persistentVolumeClaim:
+                      claimName: my-pvc  # Referencing the PVC created earlier
+                
+
+## GitRepo Volume -
+- GitRepo volume allows you to mount a Git repository as a volume, meaning you can pull code or files from a Git repository directly into a Kubernetes Pod.
+
+
+                apiVersion: v1
+                kind: Pod
+                metadata:
+                  name: gitrepo-example
+                spec:
+                  containers:
+                    - name: my-container
+                      image: nginx
+                      volumeMounts:
+                        - name: git-repo
+                          mountPath: /usr/share/nginx/html  # Path where the git repo content will be mounted
+                  volumes:
+                    - name: git-repo
+                      gitRepo:
+                        repository: "https://github.com/username/repository-name.git"
+                        revision: "main"  # The branch or commit ID to pull (e.g., "main" or "v1.0")
+                        directory: ""  # The directory to mount inside the pod (leave empty to mount root of the repo)
+                
+
+
+## ConfigMap -
+- ConfigMap is a way to store configuration data (such as key-value pairs) that can be used by Pods.
+- You can mount a ConfigMap as a volume to provide the configuration data to your applications in a way that's easy to update.
+- When you mount a ConfigMap as a volume, Kubernetes creates files based on the key-value pairs in the ConfigMap, and those files are made available inside the container at a specific mount path.
+
+
+
+## Secret -
+- Secret in Kubernetes is a way to store sensitive information, such as passwords, API keys, or certificates, and make them available to your Pods (applications) securely.
+- You don't want to store sensitive data directly in your code or in plain text in Kubernetes configurations.
+- Secrets let you store this data in an encrypted format and use it securely within your applications.
+
+#### Create a Secret:
+
+                kubectl create secret generic my-secret --from-literal=password=mysecretpassword
+
+#### Using YAML file:
+                
+                apiVersion: v1
+                kind: Pod
+                metadata:
+                  name: secret-example
+                spec:
+                  containers:
+                    - name: app-container
+                      image: myapp-image
+                      env:
+                        - name: DB_PASSWORD
+                          valueFrom:
+                            secretKeyRef:
+                              name: my-secret
+                              key: password  # The key name in the Secret
+                
+
+
+
+
+
+
+
+
+
+
+
 
 
 
