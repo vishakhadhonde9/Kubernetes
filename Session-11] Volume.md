@@ -55,14 +55,48 @@
 ## 3] PersistentVolume (PV) 
 - PersistentVolume (PV) in Kubernetes is a piece of storage in your cluster that is independent of Pods.
 - It’s like hard drive or storage device that exists at the cluster level and can be used by applications running in Pods.
-- 
+- PV is used when you need storage that survives Pod restarts or deletions.
+- PVs are cluster-wide resources, meaning they can be shared across multiple Pods in the cluster if needed.
+
+#### Access Modes:
+- ReadWriteOnce (RWO): Mounted as read-write by a single Pod.
+- ReadOnlyMany (ROX): Mounted as read-only by many Pods.
+- ReadWriteMany (RWX): Mounted as read-write by many Pods.
 
 
 
+        apiVersion: v1
+        kind: PersistentVolume
+        metadata:
+          name: my-pv
+        spec:
+          capacity:
+            storage: 10Gi  # Size of the volume
+          accessModes:
+            - ReadWriteOnce  # Access mode (can only be read/write by one Pod)
+          persistentVolumeReclaimPolicy: Retain  # Policy for reclaiming the volume after use
+          hostPath:
+            path: /mnt/data  # Path on the host machine that backs this volume
+        
+        
+
+ ## 4] PersistentVolumeClaim (PVC) -
+ -  PersistentVolumeClaim (PVC) is like a request for storage by a Pod in Kubernetes.
+ -  When a Pod needs to store data that should persist even if the Pod is deleted or recreated, it creates a PVC.
+ -  Once a PVC is created, Kubernetes will automatically bind the PVC to a PersistentVolume (PV) that matches the requested size and access mode.
 
 
-
-
+        
+        apiVersion: v1
+        kind: PersistentVolumeClaim
+        metadata:
+          name: my-pvc  # Name of the PVC
+        spec:
+          accessModes:
+            - ReadWriteOnce  # Only one Pod can write to it
+          resources:
+            requests:
+              storage: 10Gi  # Requesting 10Gi of storage
 
 
 
