@@ -61,7 +61,7 @@ curl http://my-clusterip-service.default.svc.cluster.local:80
            selector:
              app: nginx
            ports:
-             - protocol: TCP
+             - protocol: TCP    # Optional
                port: 80         # Port on which the service will be available internally
                targetPort: 80   # Port on the pod to which traffic will be forwarded
                nodePort: 30001  # External port to be used on each node
