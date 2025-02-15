@@ -58,6 +58,7 @@ curl http://my-clusterip-service.default.svc.cluster.local:80
          metadata:
            name: nginx-service
          spec:
+           type: NodePort
            selector:
              app: nginx
            ports:
@@ -65,7 +66,7 @@ curl http://my-clusterip-service.default.svc.cluster.local:80
                port: 80         # Port on which the service will be available internally
                targetPort: 80   # Port on the pod to which traffic will be forwarded
                nodePort: 30001  # External port to be used on each node
-           type: NodePort
+           
 
 
 #### Accessing the Service from Outside the Cluster-
