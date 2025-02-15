@@ -114,7 +114,6 @@ curl http://my-clusterip-service.default.svc.cluster.local:80
                   kind: Ingress
                   metadata:
                     name: my-ingress
-                    namespace: default
                   spec:
                     rules:
                     - host: example.com
