@@ -53,7 +53,7 @@
             type: Directory
 
   
-## NFS Volume -
+## EFS Volume -
 
 ### Steps-
 - Create nfs.
