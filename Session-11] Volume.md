@@ -52,6 +52,36 @@
             path: /var/log
             type: Directory
 
+  
+## NFS Volume -
+
+### Steps-
+- Create nfs.
+- Add sg of worker node into sg of efs for nfs.
+- create dir on worker node.
+- and install nfs-common on WN.
+- copy mount command from nfs--> attach.
+- replce efs from command by ~/dir-name.
+  
+
+      apiVersion: v1
+      kind: Pod
+      metadata:
+        name: nginx-pod
+      spec:
+        containers:
+          - name: nginx
+            image: nginx:latest  # Nginx image from Docker Hub
+            ports:
+              - containerPort: 80  # Expose port 80 (HTTP) inside the container
+            volumeMounts:
+              - name: nfs-storage
+                mountPath: /usr/share/nginx/html  # The directory inside the container where the NFS volume will be mounted
+        volumes:
+          - name: nfs-storage
+            nfs:
+              path: /test  # The NFS export path on the NFS server
+              server: fs-00bd1a710cc465364.efs.us-east-1.amazonaws.com  
 
 ## 3] PersistentVolume (PV) 
 - PersistentVolume (PV) in Kubernetes is a piece of storage in your cluster that is independent of Pods.
@@ -65,19 +95,21 @@
 - ReadWriteMany (RWX): Mounted as read-write by many Pods.
 
 
-
         apiVersion: v1
         kind: PersistentVolume
         metadata:
-          name: my-pv
+          name: nfs-pv
         spec:
           capacity:
-            storage: 10Gi  # Size of the volume
+            storage: 5Gi  # Specify the size of the volume
           accessModes:
-            - ReadWriteOnce  # Access mode (can only be read/write by one Pod)
-          persistentVolumeReclaimPolicy: Retain  # Policy for reclaiming the volume after use
-          hostPath:
-            path: /mnt/data  # Path on the host machine that backs this volume
+            - ReadWriteMany  # NFS supports ReadWriteMany access mode (multiple pods can access at once)
+          persistentVolumeReclaimPolicy: Retain  # Retain means the PV won't be deleted when PVC is removed
+          storageClassName: nfs-sc  # Storage class name (optional)
+          nfs:
+            path: /test  # The NFS export path on the NFS server
+            server: fs-00bd1a710cc465364.efs.us-east-1.amazonaws.com  # DNS name of the EFS server
+
         
         
 
