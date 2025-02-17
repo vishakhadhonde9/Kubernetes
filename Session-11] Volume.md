@@ -149,7 +149,7 @@
                   volumes:
                   - name: data-storage
                     persistentVolumeClaim:
-                      claimName: my-pvc  # Referencing the PVC created earlier
+                      claimName: nfs-pvc # Referencing the PVC created earlier
                 
 
 ## GitRepo Volume -
