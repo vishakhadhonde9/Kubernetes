@@ -176,9 +176,47 @@
 
 
 ## ConfigMap -
-- ConfigMap is a way to store configuration data (such as key-value pairs) that can be used by Pods.
+- ConfigMap is a way to store configuration data that can be used by Pods.
 - You can mount a ConfigMap as a volume to provide the configuration data to your applications in a way that's easy to update.
-- When you mount a ConfigMap as a volume, Kubernetes creates files based on the key-value pairs in the ConfigMap, and those files are made available inside the container at a specific mount path.
+- It store configuration settings (key-value pairs) that your applications need to run.
+- Instead of putting these settings directly inside your app’s code, you can keep them in the ConfigMap, so you can easily change the settings without modifying the app itself.
+
+## Creating a ConfigMap from Literal values: 
+
+     kubectl create configmap my-configmap --from-literal=key1=value1 --from-literal=key2=value2
+
+     kubectl create configmap mysql-pass --from-literal MYSQL_ROOT_PASSWORD=Pass@123
+
+## Creating a ConfigMap Using manifest file:
+
+
+      apiVersion: v1
+      kind: ConfigMap
+      metadata:
+        name: mysql-pass
+      data:
+        MYSQL_ROOT_PASSWORD: Pass@123
+
+
+
+## Create pod referencing configMap: 
+
+      apiVersion: v1
+      kind: Pod
+      metadata:
+        name: mysql-pod
+      spec:
+        containers:
+        - name: mysql
+          image: mysql
+          env:
+           - name: MYSQL_ROOT_PASSWORD
+             valueFrom:
+              configMapKeyRef:
+                name: mysql-pass  # Use the correct ConfigMap name
+                key: MYSQL_ROOT_PASSWORD  # The key in the ConfigMap
+
+     
 
 
 
