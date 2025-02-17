@@ -230,22 +230,52 @@
                 kubectl create secret generic my-secret --from-literal=password=mysecretpassword
 
 #### Using YAML file:
+
+
+        apiVersion: v1
+        kind: Secret
+        metadata:
+          name: mysql-secret
+        type: Opaque
+        data:
+          MYSQL_ROOT_PASSWORD: bXl1c2VyYXBhc3N3b3Jk  # Base64 encoded value of 'myuserpassword'
+          MYSQL_PASSWORD: bXl1c2VyYXBhc3N3b3Jk  # Base64 encoded value of 'myuserpassword'
+
+
+
+## Create pod by referencing secret -
                 
-                apiVersion: v1
-                kind: Pod
-                metadata:
-                  name: secret-example
-                spec:
-                  containers:
-                    - name: app-container
-                      image: myapp-image
-                      env:
-                        - name: DB_PASSWORD
-                          valueFrom:
-                            secretKeyRef:
-                              name: my-secret
-                              key: password  # The key name in the Secret
-                
+      apiVersion: apps/v1
+      kind: Deployment
+      metadata:
+        name: mysql-deployment
+      spec:
+        replicas: 1
+        selector:
+          matchLabels:
+            app: mysql
+        template:
+          metadata:
+            labels:
+              app: mysql
+          spec:
+            containers:
+            - name: mysql
+              image: mysql:8
+              env:
+              - name: MYSQL_ROOT_PASSWORD
+                valueFrom:
+                  secretKeyRef:
+                    name: mysql-secret
+                    key: MYSQL_ROOT_PASSWORD
+              - name: MYSQL_PASSWORD
+                valueFrom:
+                  secretKeyRef:
+                    name: mysql-secret
+                    key: MYSQL_PASSWORD
+              ports:
+              - containerPort: 3306
+      
 
 
 
