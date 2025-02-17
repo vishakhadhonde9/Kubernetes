@@ -119,17 +119,17 @@
  -  Once a PVC is created, Kubernetes will automatically bind the PVC to a PersistentVolume (PV) that matches the requested size and access mode.
 
 
-      apiVersion: v1
-      kind: PersistentVolumeClaim
-      metadata:
-        name: nfs-pvc
-      spec:
-        accessModes:
-          - ReadWriteMany  # This must match the PV's access mode
-        resources:
-          requests:
-            storage: 5Gi  # This must match the PV's capacity
-        storageClassName: nfs-sc  # This should match the PV's storageClassName
+          apiVersion: v1
+          kind: PersistentVolumeClaim
+          metadata:
+            name: nfs-pvc
+          spec:
+            accessModes:
+              - ReadWriteMany  # This must match the PV's access mode
+            resources:
+              requests:
+                storage: 5Gi  # This must match the PV's capacity
+            storageClassName: nfs-sc  # This should match the PV's storageClassName
 
 
 
