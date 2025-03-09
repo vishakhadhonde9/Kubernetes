@@ -79,9 +79,14 @@
 
 ## 2. Worker Nodes-
 ### a. kubelet -
-- Kubelet is an agent that runs on each node in the cluster.
+- Kube-Scheduler is a core component of Kubernetes that decides where to run new Pods in the cluster.
 - It ensures that containers are running in a pod and are healthy.
 - It communicates with the API server to get instructions (e.g., which pods to run) and reports back the status of the node and containers.
+    - Receives Instructions – The Kubernetes Control Plane (API Server) tells the Kubelet what Pods to run.
+    - Starts and Monitors Containers – The Kubelet talks to the container runtime (e.g., Docker, containerd) to start the required containers.
+    - Ensures Health of Pods – It continuously checks if Pods are running as expected. If a Pod crashes, the Kubelet restarts it.
+    - Reports to the API Server – It sends status updates about the node and Pods to the Kubernetes Control Plane.
+ 
 
 ### b. kube-proxy -
 - Kube-proxy is responsible for maintaining network rules on each node. It manages the network communication inside the cluster, ensuring that services can reach the right pods, even when pods are created or destroyed.
