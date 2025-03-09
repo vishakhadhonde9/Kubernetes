@@ -57,14 +57,19 @@
 
 ### b. etcd -
 - etcd is a distributed key-value store that holds the state of the entire Kubernetes cluster.
+- etcd as a simple database that stores all the important information about a Kubernetes cluster.
 - It stores configuration data, secrets, and the desired state of the system.
+  - It remembers everything about your cluster, like which nodes exist, which pods are running, and configuration settings.
+  - It keeps multiple copies of the data across different servers, so if one fails, the others still have the information.
+  - It updates in real time, so whenever something changes in Kubernetes (like a new pod being created), etcd knows immediately.
 
 ### c. kube-scheduler -
 - Scheduler is responsible for deciding which node (worker machine) should run the newly created pods. It selects nodes based on factors like resource availability, policies, and constraints.
-- Scheduler makes decisions like placing pods where there are enough CPU or memory resources and balancing workloads across nodes.
+- Scheduler makes decisions like placing pods where there are enough CPU or memory resources and balancing workloads across nodes.\
+- Kube-Scheduler is a core component of Kubernetes that decides where to run new Pods in the cluster. It ensures that workloads are distributed efficiently across worker nodes.
 
 ### d. kube-controller-manager -
-- Controller manager runs a set of controllers that regulate the state of the cluster. Each controller ensures that the current state matches the desired state.
+- Controller manager runs a set of controllers that regulate the state of the cluster. Each controller ensures that the current state matches the desired state; if it not matches then fix it accordingly.
 - It checks the system and makes sure everything is as it should be. For example, if some containers have stopped, it will automatically try to start new ones to replace them.
 
 ### e. cloud-controller-manager (Optional) -
