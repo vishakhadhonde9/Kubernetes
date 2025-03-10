@@ -46,7 +46,7 @@
 
 #### Accessing the ClusterIP Service from Pods-
 
-curl http://my-clusterip-service.default.svc.cluster.local:80
+curl http://my-internal-service:80
 
 
 
