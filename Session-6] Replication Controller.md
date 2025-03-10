@@ -142,7 +142,9 @@
 
 ### 3] Startup Probe -
 - Startup Probe is a special type of probe in Kubernetes designed to detect if an application within a container has successfully started.
-
+- A Startup Probe is used for applications that take a long time to start.
+- If a Startup Probe fails, Kubernetes kills the container and restarts it.
+- Liveness and Readiness Probes start only after the Startup Probe succeeds.
 
             apiVersion: v1
             kind: ReplicationController
