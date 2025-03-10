@@ -1,6 +1,8 @@
 # Service -
 - Service is an abstraction that defines a logical set of Pods and a policy to access them.
 - Services enable communication between different Pods and other resources, as they provide stable network identities for Pods.
+- Pods have dynamic IPs (they change when a Pod restarts). A Service provides a stable IP and DNS name to access the Pods.
+- It load balances traffic between multiple Pods.
 - Service port: 30000-32767
 
 #### List Services-
