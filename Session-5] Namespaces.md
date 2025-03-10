@@ -7,7 +7,7 @@
   - **default:** This is the default namespace that Kubernetes uses for resources that do not explicitly specify a namespace when they are created.
   - **kube-system:**  This namespace is reserved for system components that Kubernetes uses to manage and operate the cluster.
   - **kube-public:** The kube-public namespace is mainly reserved for resources that need to be publicly accessible or shared with all users in the cluster.
-  - **kube-node-lease:** The kube-public namespace is mainly reserved for resources that need to be publicly accessible or shared with all users in the cluster.
+  - **kube-node-lease:** Node Lease is a lightweight object in Kubernetes that represents a heartbeat signal from a node. Each node in the cluster periodically renews its lease, allowing the Kubelet and the Kubernetes control plane to detect node failures efficiently.
  
 ## Creating a Namespace -
 - **Using kubectl command:**
