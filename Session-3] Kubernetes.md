@@ -56,7 +56,7 @@
       kubectl run my-pod --image=img_name
 
 
-### 2. Viewing Pods -
+### 3. Viewing Pods -
 - To view all pods in current namespace.
 
       kubectl get pods
@@ -120,6 +120,13 @@
        kubectl label pod podname <label-key>-
 
        kubectl label pod nginx-pod env-
+
+### Selecting Pods Based on Labels -
+
+
+      kubectl get pods --selector key=value
+
+
 
 ### Selecting Multiple Labels
 
