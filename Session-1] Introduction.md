@@ -64,6 +64,8 @@
   - It updates in real time, so whenever something changes in Kubernetes (like a new pod being created), etcd knows immediately.
 
 ### c. kube-scheduler -
+- Kube-Scheduler is a core component of Kubernetes that decides where to run new Pods in the cluster.
+- It ensures that containers are running in a pod and are healthy.
 - Scheduler is responsible for deciding which node (worker machine) should run the newly created pods. It selects nodes based on factors like resource availability, policies, and constraints.
 - Scheduler makes decisions like placing pods where there are enough CPU or memory resources and balancing workloads across nodes.\
 - Kube-Scheduler is a core component of Kubernetes that decides where to run new Pods in the cluster. It ensures that workloads are distributed efficiently across worker nodes.
@@ -79,8 +81,7 @@
 
 ## 2. Worker Nodes-
 ### a. kubelet -
-- Kube-Scheduler is a core component of Kubernetes that decides where to run new Pods in the cluster.
-- It ensures that containers are running in a pod and are healthy.
+
 - It communicates with the API server to get instructions (e.g., which pods to run) and reports back the status of the node and containers.
     - Receives Instructions – The Kubernetes Control Plane (API Server) tells the Kubelet what Pods to run.
     - Starts and Monitors Containers – The Kubelet talks to the container runtime (e.g., Docker, containerd) to start the required containers.
