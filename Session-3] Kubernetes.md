@@ -66,7 +66,7 @@
 #### Get Detailed Information about pod -
 - Shows events, container status, IP address, and node details.
   
-     kubectl describe pod my-pod
+           kubectl describe pod my-pod
 
 #### Check Logs -
 
