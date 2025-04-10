@@ -37,7 +37,7 @@
 ## Scale the ReplicationController:
 - To change the number of replicas (e.g., scale to 5 Pods):
 
-       kubectl scale rc podname --replicas=5
+       kubectl scale rc rcname --replicas=5
 
 ## Delete a ReplicationController:
 
