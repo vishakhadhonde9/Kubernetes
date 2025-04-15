@@ -44,6 +44,7 @@
                      
 
 
+Note : Create pod first with same label as selector.
 
 
 #### Accessing the ClusterIP Service from Pods-
