@@ -145,7 +145,26 @@ curl http://my-internal-service:80
                     
 
 
+# Egress -
 
+
+                  apiVersion: networking.k8s.io/v1
+                  kind: NetworkPolicy
+                  metadata:
+                    name: allow-specific-egress
+                  spec:
+                    podSelector:
+                      matchLabels:
+                        app: my-app
+                    policyTypes:
+                      - Egress
+                    egress:
+                      - to:
+                          - ipBlock:
+                              cidr: 203.0.113.0/24
+                        ports:
+                          - protocol: TCP
+                            port: 80
 
 
 
