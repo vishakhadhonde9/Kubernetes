@@ -55,6 +55,7 @@ curl http://my-internal-service:80
 
 ## 2]  NodePort -
 - NodePort service is a type of Kubernetes service that exposes your application on a static port on every node in your cluster.
+- NodePort service exposes your application outside the cluster using a static port on each Node's IP. It’s like opening a specific port on every worker node, which forwards traffic to your Pods.
 - This allows external clients to access your service by sending requests to NodeIP:NodePort.
 - Essentially Kubernetes maps a port on each node to a port inside your container and making it accessible outside the Kubernetes cluster.
 
