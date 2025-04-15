@@ -1,5 +1,7 @@
 # Service -
-- Service is an abstraction that defines a logical set of Pods and a policy to access them.
+- ClusterIP service in Kubernetes is the default type of service used to expose a set of Pods internally within the Kubernetes cluster.
+- It creates a virtual IP (ClusterIP) that is only accessible within the cluster.
+- This service allows other components inside the cluster (like other Pods) to communicate with the selected Pods.
 - Services enable communication between different Pods and other resources, as they provide stable network identities for Pods.
 - Pods have dynamic IPs (they change when a Pod restarts). A Service provides a stable IP and DNS name to access the Pods.
 - It load balances traffic between multiple Pods.
