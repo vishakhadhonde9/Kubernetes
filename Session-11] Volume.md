@@ -59,7 +59,7 @@
 - Create nfs.
 - Add sg of worker node into sg of efs for nfs.
 - create dir on worker node.
-- and install nfs-common on WN.
+- and install nfs-commond on WN.
 - copy mount command from nfs--> attach.
 - replce efs from command by ~/dir-name.
   
