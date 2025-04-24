@@ -85,7 +85,7 @@
         volumes:
           - name: nfs-storage
             nfs:
-              path: /test  # The NFS export path on the NFS server
+              path: /  # The NFS export path on the NFS server
               server: fs-00bd1a710cc465364.efs.us-east-1.amazonaws.com  
 
 ## 3] PersistentVolume (PV) 
@@ -112,7 +112,7 @@
           persistentVolumeReclaimPolicy: Retain  # Retain means the PV won't be deleted when PVC is removed
           storageClassName: nfs-sc  # Storage class name (optional)
           nfs:
-            path: /test  # The NFS export path on the NFS server
+            path: /  # The NFS export path on the NFS server
             server: fs-00bd1a710cc465364.efs.us-east-1.amazonaws.com  # DNS name of the EFS server
 
         
