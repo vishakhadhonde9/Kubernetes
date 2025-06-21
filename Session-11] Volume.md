@@ -56,7 +56,7 @@
 ## EFS Volume -
 
 ### Steps-
-- Create nfs.
+- Create efs.
 - Add sg of worker node into sg of efs for nfs.
 - create dir on worker node.
 - and install nfs-common on WN.
