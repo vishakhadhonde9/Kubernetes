@@ -189,7 +189,7 @@
 
 ## Creating a ConfigMap from Literal values: 
 
-     kubectl create configmap my-configmap --from-literal=key1=value1 --from-literal=key2=value2
+     kubectl create configmap my-configmap --from-literal key1=value1 --from-literal=key2=value2
 
      kubectl create configmap mysql-pass --from-literal MYSQL_ROOT_PASSWORD=Pass@123
 
