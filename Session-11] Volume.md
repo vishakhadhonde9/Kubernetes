@@ -61,8 +61,8 @@
 - create dir on worker node.
 - and install nfs-common on WN.
 
-    sudo apt update
-    sudo apt install -y nfs-common
+        sudo apt update
+        sudo apt install -y nfs-common
 
  
 - copy mount command from nfs--> attach.
