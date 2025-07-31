@@ -41,7 +41,7 @@
 
 ## Delete a ReplicationController:
 
-       kubectl delete replicationcontroller podname
+       kubectl delete replicationcontroller rc_name
 
 
 # Probes -
