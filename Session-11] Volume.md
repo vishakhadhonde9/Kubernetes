@@ -12,25 +12,6 @@
 - If a Pod has multiple containers, all those containers can share the same emptyDir volume. They can read and write to the same space.
 - It's useful for storing temporary data that doesn't need to be kept after the Pod is deleted, like caching or temporary files that can be recreated.
 
-
-        apiVersion: v1
-        kind: PersistentVolume
-        metadata:
-          name: my-pv
-        spec:
-          capacity:
-            storage: 5Gi # Defines the storage capacity of the volume
-          accessModes:
-            - ReadWriteOnce # Specifies how the volume can be mounted (e.g., ReadWriteOnce, ReadOnlyMany, ReadWriteMany)
-          persistentVolumeReclaimPolicy: Retain # Defines what happens to the volume when the PVC is deleted (e.g., Retain, Recycle, Delete)
-          hostPath: # Example for a hostPath volume (for development/testing, not recommended for production)
-            path: "/mnt/data" # The path on the host node where the data is stored
-        
-
-
-#### PV using EFS-
-
-
                 apiVersion: v1
                 kind: Pod
                 metadata:
@@ -117,6 +98,10 @@
 - ReadOnlyMany (ROX): Mounted as read-only by many Pods.
 - ReadWriteMany (RWX): Mounted as read-write by many Pods.
 
+
+
+
+#### PV using EFS-
 
         apiVersion: v1
         kind: PersistentVolume
