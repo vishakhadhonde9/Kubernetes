@@ -72,4 +72,47 @@
         AmazonEKS_CNI_Policy
         AmazonEC2ContainerRegistryReadOnly
 
-  - 
+## 5] Create Resources -
+
+            apiVersion: v1
+            kind: Pod
+            metadata:
+              name: my-pod
+            spec:
+              containers:
+              - name: my-container
+                image: nginx
+
+
+# AWS Fargate -
+- AWS Fargate is a serverless compute engine for containers.
+- It allows you to run Docker containers without managing EC2 instances.
+- You don’t have to worry about:
+    - Provisioning servers
+    - Scaling nodes
+    - Patching operating systems
+
+- Works with:
+    - Amazon ECS (Elastic Container Service)
+    - Amazon EKS (Elastic Kubernetes Service)
+- pay only for the container CPU & memory you use
+
+## Implementation-
+
+#### Create a Fargate Profile -
+- Go to Cluster → Compute → Fargate Profiles → Add profile
+    - Name: my-fargate-profile
+    - Pod Execution Role:
+            - policy AmazonEKSFargatePodExecutionRolePolicy
+    - Select Subnets:
+    - Choose 2 or more subnets in different AZs
+    - Pod Selector:
+    - Namespace: e.g., default (all pods in default namespace run on Fargate)
+    - Labels: optional (for selective pods)
+
+
+
+
+
+
+
