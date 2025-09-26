@@ -54,7 +54,7 @@
 
       e.g.- aws eks describe-cluster --name eksc1 --region us-east-1 --query "cluster.status"
 
-## 3] 3. Verify Worker Nodes (kubectl) -
+## 3] Verify Worker Nodes (kubectl) -
 - Once the cluster is ACTIVE and you have updated kubeconfig:
 
       aws eks --region us-east-1 update-kubeconfig --name my-eks-cluster
@@ -63,4 +63,13 @@
 
       kubectl get nodes
 
+## 4] Create Worker Nodes (Node Group) -
+- Once cluster is Active, Go to Compute → Add Node Group.
+   - Node group name → linux-nodes.
+   - Node IAM Role: Attach policies:
 
+        AmazonEKSWorkerNodePolicy
+        AmazonEKS_CNI_Policy
+        AmazonEC2ContainerRegistryReadOnly
+
+  - 
