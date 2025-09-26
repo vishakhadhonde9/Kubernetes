@@ -110,6 +110,8 @@
     - Namespace: e.g., default (all pods in default namespace run on Fargate)
     - Labels: optional (for selective pods)
 
+            aws eks --region us-east-1 update-kubeconfig --name my-fargate-cluster
+            kubectl get nodes
 
 
 
