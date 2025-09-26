@@ -25,7 +25,7 @@
 #### Kubectl Installation -
 
       # Download kubectl (Linux AMD64)
-      curl -o kubectl https://amazon-eks.s3.us-east-1.amazonaws.com/1.30.0/2024-07-11/bin/linux/amd64/kubectl
+      curl -LO "https://dl.k8s.io/release/v1.30.0/bin/linux/amd64/kubectl"
       
       # Make it executable
       chmod +x ./kubectl
