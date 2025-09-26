@@ -61,7 +61,7 @@
 
       e.g.- aws eks --region us-east-1 update-kubeconfig --name eksc1
 
-      kubectl get nodes
+      kubectl get svc
 
 ## 4] Create Worker Nodes (Node Group) -
 - Once cluster is Active, Go to Compute → Add Node Group.
