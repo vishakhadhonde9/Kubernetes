@@ -248,7 +248,7 @@
 
 #### Create a Secret:
 
-                kubectl create secret generic my-secret --from-literal=password=mysecretpassword
+                kubectl create secret generic my-secret --from-literal password=mysecretpassword
 
 #### Using YAML file:
 
