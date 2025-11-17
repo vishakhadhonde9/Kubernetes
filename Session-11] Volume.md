@@ -289,11 +289,6 @@
                   secretKeyRef:
                     name: mysql-secret
                     key: MYSQL_ROOT_PASSWORD
-              - name: MYSQL_PASSWORD
-                valueFrom:
-                  secretKeyRef:
-                    name: mysql-secret
-                    key: MYSQL_PASSWORD
               ports:
               - containerPort: 3306
       
