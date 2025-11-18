@@ -87,7 +87,7 @@ StatefulSet – for stateful applications
                         metadata:
                           name: web
                         spec:
-                          serviceName: "web"
+                          serviceName: "service1"
                           replicas: 3
                           selector:
                             matchLabels:
