@@ -75,10 +75,10 @@ StatefulSet – for stateful applications
 
 # Stateful Set -
 - A StatefulSet is a Kubernetes object used to manage stateful applications—applications that need:
-        Stable (fixed) pod names
-        Stable network identity
-        Persistent storage for each pod
-        Ordered deployment and deletion
+       - Stable (fixed) pod names
+       - Stable network identity
+       - Persistent storage for each pod
+       - Ordered deployment and deletion
 
 
 
