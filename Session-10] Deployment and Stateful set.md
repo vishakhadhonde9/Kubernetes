@@ -117,14 +117,14 @@ StatefulSet – for stateful applications
 - First you need to create headless service.
 
 
-apiVersion: v1
-kind: Service
-metadata:
-  name: mysql
-spec:
-  clusterIP: None
-  selector:
-    app: mysql
-  ports:
-    - port: 3306
+        apiVersion: v1
+        kind: Service
+        metadata:
+          name: mysql
+        spec:
+          clusterIP: None
+          selector:
+            app: mysql
+          ports:
+            - port: 3306
       
