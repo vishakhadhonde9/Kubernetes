@@ -128,3 +128,67 @@ StatefulSet – for stateful applications
           ports:
             - port: 3306
       
+
+
+# Deployment -
+
+                # Create
+                kubectl create deployment nginx --image=nginx:1.17
+                
+                # Generate YAML
+                kubectl create deployment nginx --image=nginx:1.17 --dry-run=client -o yaml
+                
+                # Apply YAML
+                kubectl apply -f deployment.yaml
+                
+                # Get
+                kubectl get deploy
+                kubectl get deploy -o wide
+                
+                # Describe
+                kubectl describe deployment nginx
+                
+                # Scale
+                kubectl scale deployment nginx --replicas=5
+                
+                # Update image
+                kubectl set image deployment/nginx nginx=nginx:1.17
+                
+                # Rollout status
+                kubectl rollout status deployment/nginx
+                
+                # Rollout history
+                kubectl rollout history deployment/nginx
+                
+                # Rollback
+                kubectl rollout undo deployment/nginx
+                
+                # Rollback to revision
+                kubectl rollout undo deployment/nginx --to-revision=2
+                
+                # Pause
+                kubectl rollout pause deployment/nginx
+                
+                # Resume
+                kubectl rollout resume deployment/nginx
+                
+                # Restart
+                kubectl rollout restart deployment/nginx
+                
+                # Edit
+                kubectl edit deployment nginx
+                
+                # Get YAML
+                kubectl get deployment nginx -o yaml
+                
+                # Delete
+                kubectl delete deployment nginx
+                
+                # Check ReplicaSets
+                kubectl get rs
+                
+                # Check Pods
+                kubectl get pods
+                
+                # Watch
+                kubectl get deployment nginx -w
